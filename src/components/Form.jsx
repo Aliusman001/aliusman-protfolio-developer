@@ -34,9 +34,9 @@ export default function Form() {
               Contact Us
             </h1>
             <i className="mt-3 inline-block dark:text-white">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Excepturi quae commodi molestias ab. Nobis hic odio alias
-              excepturi neque! Corporis?
+              I'm a React js developer using JavaScript, Redux, Redux Toolkit,
+              TailwindCSS, Material UI, HTML5, CSS, Node js with Express js for
+              creating RESTful endpoints.
             </i>
           </div>
         </motion.div>

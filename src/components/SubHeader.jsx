@@ -34,9 +34,9 @@ export default function SubHeader() {
               Skills
             </h1>
             <i className="mt-3 inline-block dark:text-white">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Excepturi quae commodi molestias ab. Nobis hic odio alias
-              excepturi neque! Corporis?
+              The greatest software is not built overnight; it’s crafted with
+              patience and dedication. Programming languages are the colors of a
+              developer’s imagination.
             </i>
           </div>
 
