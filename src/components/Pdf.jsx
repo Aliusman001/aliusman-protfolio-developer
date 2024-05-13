@@ -60,6 +60,7 @@ export default function Pdf({ show, setShow }) {
         }}
         className="w-10 h-10  cursor-pointer z-10 text-white  fixed right-10  top-5"
         src={close}
+        alt="close"
       />
     </div>
   );
@@ -96,7 +97,7 @@ function Button({ handel, icon, customeClass = "" }) {
       type="button"
       className={` ${customeClass} text-yellow-600 border border-yellow-600 hover:bg-yellow-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-yellow-500 dark:text-yellow-500 dark:hover:text-white dark:focus:ring-yellow-800 dark:hover:bg-yellow-500`}
     >
-      <img src={icon} className="w-4 h-4  " />
+      <img src={icon} className="w-4 h-4  " alt="botton icons" />
     </button>
   );
 }

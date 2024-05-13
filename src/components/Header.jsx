@@ -2,6 +2,8 @@ import Lottie from "react-lottie";
 import animationData from "../animation/working.json";
 import animationData1 from "../animation/office.json";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const defaultOptions1 = {
   loop: true,
@@ -20,8 +22,25 @@ const defaultOptions2 = {
   },
 };
 export default function Header({ setShow }) {
+  const header = useRef(null);
+  const topBtn = useRef(null);
+  useEffect(function () {
+    function callback(entity, observer) {
+      if (!entity[0].isIntersecting) {
+        topBtn.current.classList.remove("hidden");
+      } else {
+        topBtn.current.classList.add("hidden");
+      }
+    }
+    const option = {
+      root: null,
+      threshold: 0,
+    };
+    const observerEle = new IntersectionObserver(callback, option);
+    observerEle.observe(header.current);
+  }, []);
   return (
-    <div id="home" className=" dark:bg-gray-900  ">
+    <div id="home" ref={header} className=" dark:bg-gray-900  ">
       <div className="grid md:grid-cols-2 pt-10 grid-cols-1  justify-items-center md:h-[calc(100vh-4rem)] max-w-screen-xl mx-auto px-5 items-center gap-7">
         <div className="md:text-left text-center text-dark dark:text-white">
           <div className="grid grid-cols-[280px,1fr] md:grid-rows-2 grid-rows-[2fr,1fr,1fr] items-center mb-4">
@@ -57,7 +76,8 @@ export default function Header({ setShow }) {
             type="button"
             className="text-white mt-5  py-4 bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-10  text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2"
           >
-            <img src="cv.svg" className="w-4 h-4 mr-2" /> My Resume
+            <img src="cv.svg" className="w-4 h-4 mr-2" alt="resume icon" /> My
+            Resume
           </button>
         </div>
         <motion.div
@@ -69,6 +89,17 @@ export default function Header({ setShow }) {
           </div>
         </motion.div>
       </div>
+      <button
+        ref={topBtn}
+        onClick={() => {
+          document
+            .querySelector("#home")
+            .scrollIntoView({ behavior: "smooth" });
+        }}
+        className=" font-bold p-3 dark:text-gray-900 dark:bg-yellow-500 bg-gray-900 text-white rounded-md  transition-all fixed right-5 bottom-5"
+      >
+        top
+      </button>
     </div>
   );
 }
