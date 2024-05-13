@@ -18,7 +18,7 @@ export default function SubHeader() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 1 }}
         variants={{
           visible: { opacity: 1, scale: 1 },

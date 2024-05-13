@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [show, setShow] = useState(false);
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   useEffect(
     function () {

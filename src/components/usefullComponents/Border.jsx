@@ -4,8 +4,8 @@ export default function Border() {
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
-      transition={{ duration: 2 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
       variants={{
         visible: { opacity: 1, x: 0 },
         hidden: {

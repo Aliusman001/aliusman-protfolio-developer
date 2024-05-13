@@ -19,7 +19,7 @@ export default function Form() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 1 }}
           variants={{
             visible: { opacity: 1, scale: 1, y: 0 },
@@ -44,9 +44,9 @@ export default function Form() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className="w-3/4"
-            transition={{ duration: 2, delay: 1 }}
+            transition={{ duration: 1 }}
             variants={{
               visible: { opacity: 1, x: 0 },
               hidden: { opacity: 0, x: -115 },
@@ -101,8 +101,8 @@ export default function Form() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false }}
-            transition={{ duration: 2, delay: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
             variants={{
               visible: { opacity: 1, x: 0 },
               hidden: { opacity: 0, x: 115 },
