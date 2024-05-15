@@ -2,6 +2,10 @@ import Lottie from "react-lottie";
 import animationData from "../animation/websiteAndGirlAnimation.json";
 import { motion } from "framer-motion";
 import Border from "./usefullComponents/Border";
+import sendMessage from "../api/sendMessage";
+import { useState } from "react";
+import Toast from "./usefullComponents/Toast";
+
 const defaultOptions1 = {
   loop: true,
   autoplay: true,
@@ -11,6 +15,24 @@ const defaultOptions1 = {
   },
 };
 export default function Form() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState({});
+
+  async function handleSubmit(e) {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      const response = await sendMessage({ email, message });
+      setResponse(response);
+    } catch (error) {
+      setResponse({ status: "fail", data: { message: error.message } });
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <>
       <Border />
@@ -52,7 +74,7 @@ export default function Form() {
               hidden: { opacity: 0, x: -115 },
             }}
           >
-            <form action="" className="w-full ">
+            <form className="w-full" onSubmit={handleSubmit}>
               <label
                 htmlFor="website-admin"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -73,6 +95,9 @@ export default function Form() {
                 </span>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                   id="website-admin"
                   className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
                   placeholder="youremail@gmail.com"
@@ -85,16 +110,22 @@ export default function Form() {
                 Your message
               </label>
               <textarea
+                value={message}
+                onChange={(e) => {
+                  setMessage(e.target.value);
+                }}
                 id="message"
                 rows="4"
+                required
                 className="block p-2.5 w-full text-sm text-gray-500 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-zinc-200 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Leave a comment..."
               ></textarea>
               <button
-                type="button"
-                className="text-gray-900 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-yellow-100 dark:focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5 w-full"
+                type="submit"
+                disabled={loading}
+                className=" disabled:cursor-not-allowed text-gray-900 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-yellow-100 dark:focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5 w-full"
               >
-                Message us
+                {loading ? "Loading..." : "Message us"}
               </button>
             </form>
           </motion.div>
@@ -114,6 +145,8 @@ export default function Form() {
           </motion.div>
         </div>
       </div>
+
+      <Toast response={response} setResponse={setResponse} />
     </>
   );
 }
