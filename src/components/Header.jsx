@@ -113,7 +113,6 @@ function DownloadPdf() {
     const link = document.createElement("a");
     link.href = fileUrl;
     link.setAttribute("download", "aliusman-resume.pdf"); // Specify the file name
-
     link.click();
   };
 
@@ -121,7 +120,7 @@ function DownloadPdf() {
     <button
       onClick={downloadFile}
       type="button"
-      className="text-white md:mt-5 sm:mt-0 border transition-all hover:text-white border-[#FF9119]  py-4 text-[#FF9119] hover:bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-4  text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2"
+      className=" md:mt-5 sm:mt-0 border transition-all hover:text-white border-[#FF9119]  py-4 text-[#FF9119] hover:bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-4  text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2"
     >
       Download Resume
     </button>
