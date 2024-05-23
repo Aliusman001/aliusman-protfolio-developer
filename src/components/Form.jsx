@@ -71,7 +71,7 @@ export default function Form() {
             transition={{ duration: 1 }}
             variants={{
               visible: { opacity: 1, x: 0 },
-              hidden: { opacity: 0, x: -115 },
+              hidden: { opacity: 0, x: -50 },
             }}
           >
             <form className="w-full" onSubmit={handleSubmit}>
@@ -136,7 +136,7 @@ export default function Form() {
             transition={{ duration: 1 }}
             variants={{
               visible: { opacity: 1, x: 0 },
-              hidden: { opacity: 0, x: 115 },
+              hidden: { opacity: 0, x: 50 },
             }}
           >
             <div className="md:col-start-2 md:col-end-3 row-start-1 row-end-1 md:h-full h-[250px] ">

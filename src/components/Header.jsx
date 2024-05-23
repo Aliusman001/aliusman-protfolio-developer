@@ -76,9 +76,9 @@ export default function Header({ setShow }) {
             type="button"
             className="text-white mt-5  py-4 bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-10  text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2"
           >
-            <img src="cv.svg" className="w-4 h-4 mr-2" alt="resume icon" /> My
-            Resume
+            My Resume
           </button>
+          <DownloadPdf />
         </div>
         <motion.div
           whileHover={{ scale: 1, rotate: 5 }}
@@ -96,10 +96,34 @@ export default function Header({ setShow }) {
             .querySelector("#home")
             .scrollIntoView({ behavior: "smooth" });
         }}
-        className=" font-bold p-3 dark:text-gray-900 dark:bg-yellow-500 bg-gray-900 text-white rounded-md  transition-all fixed right-5 bottom-5"
+        className=" font-bold p-3 dark:text-gray-900 dark:bg-yellow-500 bg-gray-900 text-white rounded-md z-20 transition-all fixed right-5 bottom-5"
       >
         top
       </button>
     </div>
+  );
+}
+
+function DownloadPdf() {
+  const downloadFile = () => {
+    // Path to the PDF file in the public folder
+    const fileUrl = `/resume.pdf`;
+
+    // Create a link element
+    const link = document.createElement("a");
+    link.href = fileUrl;
+    link.setAttribute("download", "aliusman-resume.pdf"); // Specify the file name
+
+    link.click();
+  };
+
+  return (
+    <button
+      onClick={downloadFile}
+      type="button"
+      className="text-white md:mt-5 sm:mt-0 border transition-all hover:text-white border-[#FF9119]  py-4 text-[#FF9119] hover:bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-4  text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2"
+    >
+      Download Resume
+    </button>
   );
 }
